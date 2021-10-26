@@ -1,0 +1,32 @@
+﻿@model WebApplication_EProject.Models.QvA.Question
+
+@{
+    ViewBag.Title = "Question_Details";
+}
+<style>
+    a:visited {
+        color: red;
+    }
+
+    a:hover {
+        color: aqua;
+    }
+</style>
+
+<h2>Question: @Html.DisplayFor(model => model.question_name)</h2>
+<h5>Thời gian tạo: @Html.DisplayFor(model => model.question_date)</h5>
+<h5>Được đính chính lại vào lúc @Html.DisplayFor(model => model.question_edited)</h5>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dd>
+            @Html.Raw(Model.question_desc)
+        </dd>
+
+
+        @Html.ActionLink("Trở về trang chủ chính", "Question_Index")
+    </dl>
+</div>
+
+

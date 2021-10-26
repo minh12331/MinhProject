@@ -1,0 +1,91 @@
+﻿@model IEnumerable<WebApplication_EProject.Models.NhanVienModel.NhanVien>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (ViewBag.Alert != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> @ViewBag.Alert 
+
+    </div>
+}
+<h2 style="text-align:center">Thông Tin Nhân Viên</h2>
+<p class="btn btn-warning glyphicon glyphicon-plus button_create">
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<body style="background-color: #EBEBEB">
+    @Html.AntiForgeryToken()
+    <table class="table">
+
+        <tr style="background: #202020;
+        color: white">
+            <th>
+                @Html.DisplayNameFor(model => model.Role.RoleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SDT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayTao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr style=" border: hidden;
+                border-color: black;">
+        <td>
+            @Html.DisplayFor(modelItem => item.Role.RoleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayTao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+
+        <td>
+            <button href="javascript:void(0);" data-id="@item.Employee_ID" class="anchorEdit btn btn-warning glyphicon glyphicon-edit"
+                    data-toggle="tooltip" data-placement="top" title="Edit" onclick="window.location.href='@Url.Action("Edit", "NhanViens", new { id = item.Employee_ID })'" />
+        </td>
+        <td>
+            <button href="javascript:void(0);" data-id="@item.Employee_ID" class="anchorDetail btn btn-info glyphicon glyphicon-info-sign"
+                    data-toggle="tooltip" data-placement="top" title="Details" onclick="window.location.href='@Url.Action("Details", "NhanViens", new { id = item.Employee_ID })'" />
+        </td>
+        <td>
+            <button href="javascript:void(0);" data-id="@item.Employee_ID" class="anchorDelete btn btn-danger glyphicon glyphicon-trash"
+                    data-toggle="tooltip" data-placement="top" title="Delete" onclick="window.location.href='@Url.Action("Delete", "NhanViens", new { id = item.Employee_ID })'" />
+        </td>
+    </tr>
+        }
+
+    </table>
+</body>

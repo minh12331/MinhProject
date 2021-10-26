@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WebApplication_EProject.Models.QvA.Question>
+@{
+	ViewBag.Title = "Hello";
+}
+<style>
+	a:visited {
+		color: red;
+	}
+	a:hover {
+		color: aqua;
+	}
+</style>
+<h2>Đây là câu hỏi của mình</h2>
+<body style="background-color: #EBEBEB">
+    <div class="container-fluid">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="@Url.Action("Question_Details", "Questions", new { id = item.question_id })">@item.question_name</a>
+                        <span class="badge">@item.question_date</span>
+
+
+                    </li>
+                </ul>
+
+            }
+
+        </div> <!-- End row -->
+    </div><!-- End container -->
+</body>

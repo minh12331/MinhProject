@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApplication_EProject.Models.NhanVienModel.Role>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<body style="background-color: #EBEBEB">
+    <table style="text-align: center" ; class="table">
+        <tr style="background: #202020;
+        color: white">
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+                    <button href="javascript:void(0);" data-id="@item.Role_ID" class="anchorEdit btn btn-warning glyphicon glyphicon-edit"
+                            data-toggle="tooltip" data-placement="top" title="Edit" onclick="window.location.href='@Url.Action("Edit", "Roles", new { id = item.Role_ID })'" />
+                </td>
+                <td>
+                    <button href="javascript:void(0);" data-id="@item.Role_ID" class="anchorDetail btn btn-info glyphicon glyphicon-info-sign"
+                            data-toggle="tooltip" data-placement="top" title="Details" onclick="window.location.href='@Url.Action("Details", "Roles", new { id = item.Role_ID })'" />
+                </td>
+                <td>
+                    <button href="javascript:void(0);" data-id="@item.Role_ID" class="anchorDelete btn btn-danger glyphicon glyphicon-trash"
+                            data-toggle="tooltip" data-placement="top" title="Delete" onclick="window.location.href='@Url.Action("Delete", "Roles", new { id = item.Role_ID })'" />
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
